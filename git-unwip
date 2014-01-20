@@ -1,0 +1,26 @@
+#!/bin/sh
+
+STR="\*\*\* WIP"
+FOUND=`git log HEAD -1 | tail -1 | grep "${STR}" | wc -l`
+
+EXECUTE=0
+if [ $FOUND -gt 0 ] ; then
+	EXECUTE=1
+else
+	echo "No WIP commit was found. HEAD is:"
+	echo ""
+	git log HEAD -1
+	while true; do
+		echo ""
+		read -p "Unwip? [y/n/q] : " yn
+		case $yn in
+			[Yy]* ) EXECUTE=1; break;;
+			[NnQq]* ) exit;;
+			* ) echo "Please answer yes or no.";;
+		esac
+	done
+fi
+
+if [ $EXECUTE -eq 1 ] ; then
+	git reset HEAD~1
+fi
