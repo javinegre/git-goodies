@@ -1,0 +1,24 @@
+#!/bin/sh
+
+if [ -z "$1" ] ; then
+        BRANCH1="HEAD"
+else
+        BRANCH1=$1
+fi
+
+if [ -z "$2" ] ; then
+	BRANCH2="master"
+else
+	BRANCH2=$2
+fi
+
+echo
+DIV1=`git log $BRANCH1..$BRANCH2 --oneline | wc -l`
+echo "$BRANCH1 < $DIV1 < $BRANCH2"
+git log $BRANCH1..$BRANCH2 --oneline
+
+echo
+DIV2=`git log $BRANCH2..$BRANCH1 --oneline | wc -l`
+echo "$BRANCH1 > $DIV2 > $BRANCH2"
+git log $BRANCH2..$BRANCH1 --oneline
+echo
