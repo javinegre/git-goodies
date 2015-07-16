@@ -1,13 +1,13 @@
 #!/bin/sh
 
 if [ -z "$1" ] ; then
-        BRANCH1="HEAD"
+        BRANCH1="master"
 else
         BRANCH1=$1
 fi
 
 if [ -z "$2" ] ; then
-	BRANCH2="master"
+	BRANCH2="HEAD"
 else
 	BRANCH2=$2
 fi

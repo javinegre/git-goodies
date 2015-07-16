@@ -37,6 +37,6 @@ Creates a commit with the changes from your working directory and/or staging are
 
 Removes a previously 'wipped' commit applying a default reset ( keeping changes in the working directory )
 
-> ```git divlog [branch1 = HEAD] [branch2 = master]```
+> ```git divlog [branch1 = master] [branch2 = HEAD]```
 
-Shows which commits are in branch1 and not in branch2 and viceversa. Parameters are optional, by default ```branch1``` is ```HEAD``` and ```branch2``` is ```master```.
+Shows which commits are in branch1 and not in branch2 and viceversa. Parameters are optional, by default ```branch1``` is ```master``` and ```branch2``` is ```HEAD```.
