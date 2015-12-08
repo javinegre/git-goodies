@@ -2,6 +2,7 @@
 
 STR="\*\*\* WIP"
 FOUND=`git log HEAD -1 | tail -1 | grep "${STR}" | wc -l`
+DIRTY=`git ls-files -m | wc -l`
 
 EXECUTE=0
 if [ $FOUND -gt 0 ] ; then
@@ -22,5 +23,10 @@ else
 fi
 
 if [ $EXECUTE -eq 1 ] ; then
-	git reset HEAD~1
+	if [ $DIRTY -eq 0 ] ; then
+		git reset HEAD~1
+	else
+		git wip
+		git reset HEAD~2
+	fi
 fi
